@@ -1,0 +1,34 @@
+/**
+ * <%= name %> - <%= description %>
+ */
+
+// import needed modules
+
+import * as loglevel from 'loglevel'
+<% if (promise) { %>
+import Bluebird = require('bluebird')
+<% } %>
+/**
+ * <%= name %> - <%= description %>
+ */
+
+export class ExampleClass {
+
+  /**
+   * Use a logger instance to log, what you're doing
+   */
+  private _log: loglevel.Logger = null
+
+  constructor () {
+    this._log = loglevel.getLogger('<%= name %>:ExampleClass')
+  }
+<% if (promise) { %>
+  public helloWorld (name: string): Bluebird<string> {
+    return Bluebird.resolve(`Hello ${name}`)
+  }
+<% } else { %>
+  public helloWorld (name: string): string {
+    return `Hello ${name}`
+  }
+<% } %>
+}
