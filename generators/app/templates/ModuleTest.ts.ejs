@@ -1,0 +1,39 @@
+import 'mocha'
+import chai = require('chai')
+import { ExampleClass } from '../index'
+<% if (promise) { %>import chaiAsPromised = require('chai-as-promised')
+chai.use(chaiAsPromised)
+<% } %>
+describe(
+  'My class', function () {
+    let subject = new ExampleClass()
+    it('should greet me', function () {
+      <% if (promise) { %>return subject.helloWorld('friend')
+        .then(
+          greet => {
+            chai.expect(
+              greet,
+              'Invalid greeting'
+            ).to.equal(
+              'Hello friend'
+            )
+          }
+        )
+    <% } else { %>let greet = subject.helloWorld('friend')
+      chai.expect(
+        greet,
+        'Invalid greeting'
+      ).to.equal(
+        'Hello friend'
+      )
+    <% } %>})
+    it('should fail greeting nobody', function () {
+      <% if (promise) { %>return chai.expect(
+        subject.helloWorld('')
+      ).to.be.rejectedWith('Found nobody to greet')<% } else { %>let greet =
+        chai.expect(
+          subject.helloWorld.bind(null, '')
+        ).to.throw('Found nobody to greet')<% } %>
+    })
+  }
+)

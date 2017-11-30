@@ -24,10 +24,16 @@ export class ExampleClass {
   }
 <% if (promise) { %>
   public helloWorld (name: string): Bluebird<string> {
+    if (name === '') {
+      return Bluebird.reject(new Error('Found nobody to greet'))
+    }
     return Bluebird.resolve(`Hello ${name}`)
   }
 <% } else { %>
   public helloWorld (name: string): string {
+    if (name === '') {
+      throw new Error('Found nobody to greet')
+    }
     return `Hello ${name}`
   }
 <% } %>

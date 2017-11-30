@@ -106,6 +106,7 @@ module.exports = class extends Generator {
   installDevDependencies () {
     this.log('Setting up dev dependencies')
     let pkgs = [
+      "@types/node",
       "@types/chai",
       "@types/mocha",
       "@types/loglevel",
@@ -149,6 +150,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('index.ts.ejs'),
       this.destinationPath('index.ts'),
+      this._props
+    )
+    this.log('Creating Testsuite ModuleTest.ts')
+    this.fs.copyTpl(
+      this.templatePath('ModuleTest.ts.ejs'),
+      this.destinationPath('test/ModuleTest.ts'),
       this._props
     )
     this.log('Creating README.md')
