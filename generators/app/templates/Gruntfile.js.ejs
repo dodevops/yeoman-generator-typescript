@@ -15,7 +15,8 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-            coverage: ['test/coverage']
+            coverage: ['test/coverage']<% if (typedoc) { %>,
+            doc: ['doc']<% } %>
         },
         ts: {
             default: {
@@ -70,7 +71,17 @@ module.exports = function (grunt) {
                 dir: 'test/coverage/reports',
                 print: 'detail'
             }
-        }
+        }<% if (typedoc) { %>,
+        typedoc: {
+            default: {
+                options: {
+                    out: 'doc/',
+                    name: '<%= name %>',
+                    readme: 'README.md'
+                },
+                src: ['index.ts']
+            }
+        }<% } %>
     });
 
     grunt.loadNpmTasks('grunt-ts');
@@ -79,7 +90,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-istanbul');
     grunt.loadNpmTasks('remap-istanbul');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-copy');<% if (typedoc) { %>
+    grunt.loadNpmTasks('grunt-typedoc');<% } %>
 
     grunt.registerTask(
         'build',
@@ -94,7 +106,14 @@ module.exports = function (grunt) {
         [
             'build'
         ]
-    );
+    );<% if (typedoc) { %>
+    grunt.registerTask(
+        'doc',
+        [
+            'clean:doc',
+            'typedoc'
+        ]
+    );<% } %>
 
     grunt.registerTask(
         'test',
@@ -113,7 +132,8 @@ module.exports = function (grunt) {
     grunt.registerTask(
         'release',
         [
-            'test'
+            'test'<% if (typedoc) { %>,
+            'doc'<% } %>
         ]
     );
 

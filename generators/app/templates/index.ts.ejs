@@ -1,17 +1,17 @@
 /**
- * <%= name %> - <%= description %>
+ * @module <%= name %>
+ */
+/**
  */
 
 // import needed modules
 
-import * as loglevel from 'loglevel'
-<% if (promise) { %>
-import Bluebird = require('bluebird')
-<% } %>
+import * as loglevel from 'loglevel'<% if (promise) { %>
+import Bluebird = require('bluebird')<% } %>
+
 /**
  * <%= name %> - <%= description %>
  */
-
 export class ExampleClass {
 
   /**
@@ -23,6 +23,11 @@ export class ExampleClass {
     this._log = loglevel.getLogger('<%= name %>:ExampleClass')
   }
 <% if (promise) { %>
+  /**
+   * Be nice.
+   * @param {string} name Who are you?
+   * @return {Bluebird<string>} My greets to you
+   */
   public helloWorld (name: string): Bluebird<string> {
     if (name === '') {
       return Bluebird.reject(new Error('Found nobody to greet'))
@@ -30,6 +35,11 @@ export class ExampleClass {
     return Bluebird.resolve(`Hello ${name}`)
   }
 <% } else { %>
+  /**
+   * Be nice.
+   * @param {string} name Who are you?
+   * @return {string} My greets to you
+   */
   public helloWorld (name: string): string {
     if (name === '') {
       throw new Error('Found nobody to greet')

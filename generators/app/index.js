@@ -76,6 +76,12 @@ module.exports = class extends Generator {
               name: 'promise',
               message: 'Do you want to work with promises?',
               default: true
+            },
+            {
+              type: 'confirm',
+              name: 'typedoc',
+              message: 'Do you want automatic code documentation using typedoc?',
+              default: true
             }
           ])
         }
@@ -131,6 +137,13 @@ module.exports = class extends Generator {
         '@types/chai-as-promised'
       )
     }
+    if (this._props.typedoc) {
+      pkgs.push(
+        'grunt-typedoc',
+        'typedoc',
+        'typedoc-plugin-external-module-name'
+      )
+    }
     this.npmInstall(
       pkgs,
       {
@@ -150,6 +163,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('index.ts.ejs'),
       this.destinationPath('index.ts'),
+      this._props
+    )
+    this.log('Creating Gruntfile.js')
+    this.fs.copyTpl(
+      this.templatePath('Gruntfile.js.ejs'),
+      this.destinationPath('Gruntfile.js'),
       this._props
     )
     this.log('Creating Testsuite ModuleTest.ts')
