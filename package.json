@@ -1,6 +1,6 @@
 {
   "name": "generator-dodevops-typescript",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A highly opinionated Yeoman generator for typescript modules",
   "keywords": [
     "yeoman-generator",
