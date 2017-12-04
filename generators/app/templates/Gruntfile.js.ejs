@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         },
         clean: {
             coverage: ['test/coverage']<% if (typedoc) { %>,
-            doc: ['doc']<% } %>
+            doc: ['docs']<% } %>
         },
         ts: {
             default: {
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         typedoc: {
             default: {
                 options: {
-                    out: 'doc/',
+                    out: 'docs/',
                     name: '<%= name %>',
                     readme: 'README.md'
                 },
