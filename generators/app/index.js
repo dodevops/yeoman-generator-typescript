@@ -188,8 +188,8 @@ module.exports = class extends Generator {
       this.templatePath('static/*'),
       this.destinationPath()
     )
-    this.fs.copy(
-      this.templatePath('static/.gitignore'),
+    this.fs.copyTpl(
+      this.templatePath('gitignore.ejs'),
       this.destinationPath('.gitignore')
     )
   }
