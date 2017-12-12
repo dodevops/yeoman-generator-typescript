@@ -141,7 +141,7 @@ module.exports = class extends Generator {
       pkgs.push(
         'grunt-typedoc',
         'typedoc',
-        'typedoc-plugin-external-module-name'
+        'typedoc-plugin-external-module-map'
       )
     }
     this.npmInstall(
@@ -191,6 +191,13 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('gitignore.ejs'),
       this.destinationPath('.gitignore')
+    )
+  }
+
+  end () {
+    this.log('I finished generating your new module. Have fun with it!')
+    this.log(
+      'An example code file was created as index.ts. The module expects library modules in a folder called "lib".'
     )
   }
 }

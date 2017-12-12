@@ -79,7 +79,8 @@ module.exports = function (grunt) {
         options: {
           out: 'docs/',
           name: '<%= name %>',
-          readme: 'README.md'
+          readme: 'README.md',
+          "external-modulemap": '.*/lib/([^/]*)/.*'
         },
         src: ['index.ts']
       }
