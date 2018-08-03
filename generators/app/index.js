@@ -192,6 +192,10 @@ module.exports = class extends Generator {
       this.templatePath('gitignore.ejs'),
       this.destinationPath('.gitignore')
     )
+    this.fs.write(
+      this.destinationPath('lib/.gitkeep'),
+      'Remove me once you created other files in lib.'
+    )
   }
 
   end () {

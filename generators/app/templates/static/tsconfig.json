@@ -9,10 +9,12 @@
     },
     "include": [
         "index.ts",
-        "test/**/*.ts"
+        "test/**/*.ts",
+        "lib/**/*.ts"
     ],
     "exclude": [
         "index.d.ts",
-        "test/**/*.d.ts"
+        "test/**/*.d.ts",
+        "lib/**/*.d.ts"
     ]
 }

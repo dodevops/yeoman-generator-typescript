@@ -55,7 +55,8 @@ describe(
                 'test/ModuleTest.ts',
                 'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json'
+                'tslint.json',
+                'lib'
               ]
             )
             // test correct entries
@@ -91,6 +92,19 @@ describe(
                   'Gruntfile.js',
                   /'doc',/
                 ],
+              ]
+            )
+            // test lib support
+            assert.fileContent(
+              [
+                [
+                  'tsconfig.json',
+                  /include(.|[\r\n])+"lib\/\*\*\/\*\.ts/
+                ],
+                [
+                  'tsconfig.json',
+                  /exclude(.|[\r\n])*"lib\/\*\*\/\*\.d\.ts/
+                ]
               ]
             )
           }
@@ -113,7 +127,8 @@ describe(
                 'test/ModuleTest.ts',
                 'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json'
+                'tslint.json',
+                'lib'
               ]
             )
             // test correct entries
@@ -149,6 +164,19 @@ describe(
                   'Gruntfile.js',
                   /'doc',/
                 ],
+              ]
+            )
+            // test lib support
+            assert.fileContent(
+              [
+                [
+                  'tsconfig.json',
+                  /include(.|[\r\n])+"lib\/\*\*\/\*\.ts/
+                ],
+                [
+                  'tsconfig.json',
+                  /exclude(.|[\r\n])*"lib\/\*\*\/\*\.d\.ts/
+                ]
               ]
             )
           }
@@ -171,7 +199,8 @@ describe(
                 'test/ModuleTest.ts',
                 'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json'
+                'tslint.json',
+                'lib'
               ]
             )
             // test correct entries
@@ -207,6 +236,19 @@ describe(
                   'Gruntfile.js',
                   /'doc',/
                 ],
+              ]
+            )
+            // test lib support
+            assert.fileContent(
+              [
+                [
+                  'tsconfig.json',
+                  /include(.|[\r\n])+"lib\/\*\*\/\*\.ts/
+                ],
+                [
+                  'tsconfig.json',
+                  /exclude(.|[\r\n])*"lib\/\*\*\/\*\.d\.ts/
+                ]
               ]
             )
           }
@@ -230,7 +272,8 @@ describe(
                 'test/ModuleTest.ts',
                 'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json'
+                'tslint.json',
+                'lib'
               ]
             )
             // test correct entries
@@ -266,6 +309,19 @@ describe(
                   'Gruntfile.js',
                   /'doc',/
                 ],
+              ]
+            )
+            // test lib support
+            assert.fileContent(
+              [
+                [
+                  'tsconfig.json',
+                  /include(.|[\r\n])+"lib\/\*\*\/\*\.ts/
+                ],
+                [
+                  'tsconfig.json',
+                  /exclude(.|[\r\n])*"lib\/\*\*\/\*\.d\.ts/
+                ]
               ]
             )
           }
