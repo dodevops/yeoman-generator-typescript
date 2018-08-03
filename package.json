@@ -1,6 +1,6 @@
 {
   "name": "generator-dodevops-typescript",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A highly opinionated Yeoman generator for typescript modules",
   "keywords": [
     "yeoman-generator",
@@ -11,9 +11,10 @@
   ],
   "author": "Dennis Ploeger",
   "license": "MIT",
+  "homepage": "https://github.com/dodevops/yeoman-generator-typescript",
   "repository": {
     "type": "git",
-    "url": "git@github.com:dodevops/yeoman-generator-typescript.git"
+    "url": "git://github.com/dodevops/yeoman-generator-typescript.git"
   },
   "dependencies": {
     "yeoman-generator": "^2.0.1",
