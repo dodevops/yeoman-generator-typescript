@@ -1,6 +1,6 @@
 {
   "name": "generator-dodevops-typescript",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A highly opinionated Yeoman generator for typescript modules",
   "keywords": [
     "yeoman-generator",
@@ -17,15 +17,13 @@
     "url": "git://github.com/dodevops/yeoman-generator-typescript.git"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
-    "git-remote-origin-url": "^2.0.0"
+    "git-remote-origin-url": "^2.0.0",
+    "yeoman-generator": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.12.0",
-    "standard": "^10.0.3",
-    "yeoman-test": "^1.7.0",
-    "mocha": "^4.0.1",
-    "chai": "^4.1.2",
-    "yeoman-assert": "^3.1.0"
+    "chai": "^4.2.0",
+    "mocha": "^4.1.0",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^2.0.0"
   }
 }

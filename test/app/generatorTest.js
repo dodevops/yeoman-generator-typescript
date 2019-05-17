@@ -56,7 +56,8 @@ describe(
                 'sonar-project.properties',
                 'tsconfig.json',
                 'tslint.json',
-                'lib'
+                'lib',
+                '.prettierrc.yaml'
               ]
             )
             // test correct entries
@@ -128,7 +129,8 @@ describe(
                 'sonar-project.properties',
                 'tsconfig.json',
                 'tslint.json',
-                'lib'
+                'lib',
+                '.prettierrc.yaml'
               ]
             )
             // test correct entries
@@ -200,7 +202,8 @@ describe(
                 'sonar-project.properties',
                 'tsconfig.json',
                 'tslint.json',
-                'lib'
+                'lib',
+                '.prettierrc.yaml'
               ]
             )
             // test correct entries
@@ -273,7 +276,8 @@ describe(
                 'sonar-project.properties',
                 'tsconfig.json',
                 'tslint.json',
-                'lib'
+                'lib',
+                '.prettierrc.yaml'
               ]
             )
             // test correct entries

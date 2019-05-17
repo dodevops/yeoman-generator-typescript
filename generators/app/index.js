@@ -128,7 +128,8 @@ module.exports = class extends Generator {
       "grunt-contrib-copy",
       "grunt-istanbul",
       "remap-istanbul",
-      "tslint-config-standard"
+      "prettier",
+      "tslint-config-prettier"
     ]
     if (this._props.promise) {
       pkgs.push(
@@ -187,6 +188,10 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('static/*'),
       this.destinationPath()
+    )
+    this.fs.copy(
+      this.templatePath('static/.prettierrc.yaml'),
+      this.destinationPath('.prettierrc.yaml')
     )
     this.fs.copyTpl(
       this.templatePath('gitignore.ejs'),
