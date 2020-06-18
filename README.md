@@ -1,4 +1,6 @@
-# generator-dodevops-typescript - A highly opinionated Yeoman generator for typescript modules
+# A highly opinionated Yeoman generator for typescript modules
+
+![npm](https://img.shields.io/npm/v/generator-dodevops-typescript)
 
 ## Introduction
 
