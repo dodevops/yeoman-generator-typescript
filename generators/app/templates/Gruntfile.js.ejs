@@ -1,94 +1,83 @@
 module.exports = function (grunt) {
-
   grunt.initConfig({
-    tslint: {
-      options: {
-        configuration: 'tslint.json'
-      },
+    eslint: {
       files: {
-        src: [
-          'index.ts',
-          'lib/**/*.ts',
-          'test/**/*.ts',
-          '!index.d.ts',
-          '!lib/**/*.d.ts',
-          '!test/**/*.d.ts'
-        ]
-      }
+        src: ['index.ts', 'lib/**/*.ts', 'test/**/*.ts', '!index.d.ts', '!lib/**/*.d.ts', '!test/**/*.d.ts'],
+      },
     },
     clean: {
       coverage: ['test/coverage']<% if (typedoc) { %>,
-      doc: ['docs']<% } %>
+      doc: ['docs'],<% } else { %>,<% } %>
     },
     ts: {
       default: {
-        tsconfig: true
-      }
+        tsconfig: true,
+      },
     },
     copy: {
       test: {
         files: {
-          'test/coverage/instrument/': 'test/**/*.js'
+          'test/coverage/instrument/': 'test/**/*.js',
         },
         options: {
-          expand: true
-        }
-      }
+          expand: true,
+        },
+      },
     },
     instrument: {
       files: ['index.js', 'lib/**/*.js'],
       options: {
         lazy: true,
-        basePath: 'test/coverage/instrument/'
-      }
+        basePath: 'test/coverage/instrument/',
+      },
     },
     mochaTest: {
       test: {
         options: {
           reporter: 'spec',
-          quiet: false
+          quiet: false,
         },
-        src: ['test/coverage/instrument/test/**/*.js']
-      }
+        src: ['test/coverage/instrument/test/**/*.js'],
+      },
     },
     storeCoverage: {
       options: {
-        dir: 'test/coverage/reports'
-      }
+        dir: 'test/coverage/reports',
+      },
     },
     remapIstanbul: {
       build: {
         src: 'test/coverage/reports/coverage.json',
         options: {
           reports: {
-            'json': 'test/coverage/reports/coverage-mapped.json'
-          }
-        }
-      }
+            json: 'test/coverage/reports/coverage-mapped.json',
+          },
+        },
+      },
     },
     makeReport: {
       src: 'test/coverage/reports/coverage-mapped.json',
       options: {
         type: 'lcov',
         dir: 'test/coverage/reports',
-        print: 'detail'
-      }
-    }<% if (typedoc) { %>,
+        print: 'detail',
+      },
+    },<% if (typedoc) { %>
     typedoc: {
       default: {
         options: {
           out: 'docs/',
           name: '<%= name %>',
           readme: 'README.md',
-          "external-modulemap": '.*/lib/([^/]*)/.*'
+          'external-modulemap': '.*/lib/([^/]*)/.*',
         },
-        src: ['index.ts']
-      }
-    }<% } %>
+        src: ['index.ts'],
+      },
+    },<% } %>
   })
 
   grunt.loadNpmTasks('grunt-ts')
-  grunt.loadNpmTasks('grunt-tslint')
+  grunt.loadNpmTasks('grunt-eslint')
   grunt.loadNpmTasks('grunt-mocha-test')
   grunt.loadNpmTasks('grunt-istanbul')
   grunt.loadNpmTasks('remap-istanbul')
@@ -96,48 +85,21 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy')<% if (typedoc) { %>
   grunt.loadNpmTasks('grunt-typedoc')<% } %>
 
-  grunt.registerTask(
+  grunt.registerTask('build', ['eslint', 'ts'])
+
+  grunt.registerTask('default', ['build'])<% if (typedoc) { %>
+  grunt.registerTask('doc', ['clean:doc', 'typedoc'])<% } %>
+
+  grunt.registerTask('test', [
     'build',
-    [
-      'tslint',
-      'ts'
-    ]
-  )
+    'clean:coverage',
+    'copy:test',
+    'instrument',
+    'mochaTest:test',
+    'storeCoverage',
+    'remapIstanbul',
+    'makeReport',
+  ])
 
-  grunt.registerTask(
-    'default',
-    [
-      'build'
-    ]
-  )<% if (typedoc) { %>
-  grunt.registerTask(
-    'doc',
-    [
-      'clean:doc',
-      'typedoc'
-    ]
-  )<% } %>
-
-  grunt.registerTask(
-    'test',
-    [
-      'build',
-      'clean:coverage',
-      'copy:test',
-      'instrument',
-      'mochaTest:test',
-      'storeCoverage',
-      'remapIstanbul',
-      'makeReport'
-    ]
-  )
-
-  grunt.registerTask(
-    'release',
-    [
-      'test'<% if (typedoc) { %>,
-      'doc'<% } %>
-    ]
-  )
-
+  grunt.registerTask('release', ['test'<% if (typedoc) { %>, 'doc'<% } %>])
 }

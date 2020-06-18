@@ -115,21 +115,23 @@ module.exports = class extends Generator {
       "@types/node",
       "@types/chai",
       "@types/mocha",
-      "@types/loglevel",
       "chai",
       "grunt",
       "grunt-ts",
-      "grunt-tslint",
+      "grunt-eslint",
       "grunt-mocha-test",
       "mocha",
-      "tslint",
+      "eslint",
+      "eslint-config-prettier",
+      "eslint-plugin-prettier",
+      "prettier",
+      "@typescript-eslint/parser",
+      "@typescript-eslint/eslint-plugin",
       "typescript",
       "grunt-contrib-clean",
       "grunt-contrib-copy",
       "grunt-istanbul",
       "remap-istanbul",
-      "prettier",
-      "tslint-config-prettier"
     ]
     if (this._props.promise) {
       pkgs.push(
@@ -192,6 +194,14 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('static/.prettierrc.yaml'),
       this.destinationPath('.prettierrc.yaml')
+    )
+    this.fs.copy(
+      this.templatePath('static/.prettierignore'),
+      this.destinationPath('.prettierignore')
+    )
+    this.fs.copy(
+        this.templatePath('static/.eslintrc.json'),
+        this.destinationPath('.eslintrc.json')
     )
     this.fs.copyTpl(
       this.templatePath('gitignore.ejs'),

@@ -53,9 +53,8 @@ describe(
                 'package.json',
                 'README.md',
                 'test/ModuleTest.ts',
-                'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json',
+                '.eslintrc.json',
                 'lib',
                 '.prettierrc.yaml'
               ]
@@ -126,9 +125,8 @@ describe(
                 'package.json',
                 'README.md',
                 'test/ModuleTest.ts',
-                'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json',
+                '.eslintrc.json',
                 'lib',
                 '.prettierrc.yaml'
               ]
@@ -199,9 +197,8 @@ describe(
                 'package.json',
                 'README.md',
                 'test/ModuleTest.ts',
-                'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json',
+                '.eslintrc.json',
                 'lib',
                 '.prettierrc.yaml'
               ]
@@ -273,9 +270,8 @@ describe(
                 'package.json',
                 'README.md',
                 'test/ModuleTest.ts',
-                'sonar-project.properties',
                 'tsconfig.json',
-                'tslint.json',
+                '.eslintrc.json',
                 'lib',
                 '.prettierrc.yaml'
               ]

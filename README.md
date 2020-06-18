@@ -9,8 +9,7 @@ This is a highly opinionated [Yeoman](http://yeoman.io) generator for building T
 * [Istanbul](https://istanbul.js.org/)-based coverage calculation
 * [Loglevel](https://github.com/pimterry/loglevel) Logger set up
 * Support for [Bluebird](http://bluebirdjs.com/)-based promises (including testing capabilities based on [chai-as-promised](https://github.com/domenic/chai-as-promised))
-* Code Style checking based on [TSLint](https://palantir.github.io/tslint) and the [Javascript standard code style](https://standardjs.com/)
-* Project settings for [SonarQube](https://www.sonarqube.org/) analysis
+* Code Style checking based on [ESlint](https://eslint.org/), [Typescript-eslint](https://typescript-eslint.io/) and [Prettier](https://prettier.io/) with some opinionated settings
 * Git ignore set up for Node and major IDEs
 
 ## Usage
