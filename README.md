@@ -1,3 +1,5 @@
+**This generator is ARCHIVED as we're not using it anymore.**
+
 # A highly opinionated Yeoman generator for typescript modules
 
 ![npm](https://img.shields.io/npm/v/generator-dodevops-typescript) ![Travis (.org)](https://img.shields.io/travis/dodevops/yeoman-generator-typescript)
